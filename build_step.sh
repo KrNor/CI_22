@@ -2,4 +2,5 @@
 
 echo "Build script"
 npm ci
-npm npm run build:ui
+npm run build:ui
+echo "Build script end"
