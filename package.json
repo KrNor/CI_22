@@ -10,7 +10,7 @@
     "dev": "nodemon index.js",
     "start": "node index.js",
     "test": "jest",
-    "build:ui": "rm -rf dist && cd ./phonebook/ && npm run build && cp -r dist ..",
+    "build:ui": "rm -rf dist && cd ./phonebook/ && npm ci && npm run build && cp -r dist ..",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push",
     "lint": "eslint ."
   },
