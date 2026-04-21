@@ -1,11 +1,13 @@
 import { render } from "vitest-browser-react";
-import { expect, test } from "vitest";
-import { PhoneBook } from "./PhoneBook.jsx";
+import { describe, it, expect } from "vitest";
+import PhoneBook from "./PhoneBook.jsx";
 
-test("counter button increments the count", async () => {
-  const screen = await render(<PhoneBook count={1} />);
+describe("PhoneBook", () => {
+  it("renders input", async () => {
+    const screen = await render(<PhoneBook value="Alex" onChange={() => {}} />);
 
-  await screen.getByRole("button", { name: "Increment" }).click();
+    const text_box = await screen.getByRole("textbox");
 
-  await expect.element(screen.getByText("Count is 2")).toBeVisible();
+    expect(text_box).toHaveValue("Alex");
+  });
 });
