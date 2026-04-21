@@ -41,7 +41,7 @@ jobs:
       - name: Run test client
         run: npm run test
   deployment:
-    needs: [initial_setup, client_setup]
+    needs: [server_setup, client_setup]
     runs-on: ubuntu-latest
     steps:
       - name: Trigger deployment
