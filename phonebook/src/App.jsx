@@ -43,20 +43,20 @@ const App = () => {
       window.confirm(
         `are you sure you want to delete the contact "${
           persons.find((val) => val.id === event).name
-        }"?`
+        }"?`,
       )
     ) {
       contactsService
         .deleteContact(event)
-        .then((pres) => {
+        .then(() => {
           contactsService.getAll().then((response) => {
             setPersons(response.data);
           });
         })
-        .catch((error) => {
+        .catch(() => {
           setNewisError(true);
           setErrorMessage(
-            `the contact you wanted to delete is already deleted !`
+            `the contact you wanted to delete is already deleted !`,
           );
           setTimeout(() => {
             setErrorMessage(null);
@@ -79,7 +79,7 @@ const App = () => {
     } else if (persons.map((person) => person.name).includes(newName)) {
       if (
         window.confirm(
-          `the contact ${newName} already exists, do you want to update it ?`
+          `the contact ${newName} already exists, do you want to update it ?`,
         )
       ) {
         const contactObject = {
@@ -89,7 +89,7 @@ const App = () => {
         contactsService
           .updateContact(
             persons.find((val) => val.name === newName).id,
-            contactObject
+            contactObject,
           )
           .then(() => {
             contactsService.getAll().then((response) => {
@@ -103,7 +103,7 @@ const App = () => {
               }, 2000);
             });
           })
-          .catch((error) => {
+          .catch(() => {
             setNewisError(true);
             setErrorMessage(`there was a problem with updating the contact !`);
             setTimeout(() => {
@@ -130,7 +130,7 @@ const App = () => {
             setErrorMessage(null);
           }, 2000);
         })
-        .catch((error) => {
+        .catch(() => {
           setNewisError(true);
           setErrorMessage(`there was a problem with updating the contact !`);
           setTimeout(() => {
@@ -143,7 +143,7 @@ const App = () => {
     newSearch.length < 1
       ? persons
       : persons.filter((persona) =>
-          persona.name.toLowerCase().includes(newSearch)
+          persona.name.toLowerCase().includes(newSearch),
         );
 
   return (
