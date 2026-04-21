@@ -51,6 +51,18 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - run: echo "good"
+  tag_release:
+    needs: [deployment]
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' &&  success()}}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Bump version and push tag
+        if: ${{ github.event_name != 'pull' && !contains(join(github.event.commits.*.message, ', '), '#skip') }}
+        uses: anothrNick/github-tag-action@4ed44965e0db8dab2b466a16da04aec3cc312fd8
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
   fail_pipe:
     runs-on: ubuntu-latest
     needs: [deployment]
