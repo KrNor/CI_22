@@ -66,7 +66,7 @@ export default [
     },
   },
   {
-    ignores: ["dist/**", "build/**", "phonebook/**"],
+    ignores: ["dist/**", "build/**", "phonebook/**", "**.test.js"],
   },
   eslintConfigPrettier,
 ];
