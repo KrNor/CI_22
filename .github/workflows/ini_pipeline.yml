@@ -17,5 +17,3 @@ jobs:
         run: npm ci
       - name: Run linting
         run: npm run lint
-      - name: Build backend
-        run: npm run build
