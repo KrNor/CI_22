@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build_and_test:
+  initial_setup:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -17,5 +17,10 @@ jobs:
         run: npm ci
       - name: Run linting
         run: npm run lint
-      - name: Build ui
-        run: npm run build:ui
+      - run: cd ./phonebook
+      - name: Install dependencies client
+        run: npm ci
+      - name: Build client
+        run: npm run build
+      - name: Run linting client
+        run: npm run lint
